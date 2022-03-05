@@ -1,0 +1,44 @@
+<%-include('../partials/header') %>
+
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('https://cdn.pixabay.com/photo/2015/06/10/19/13/background-805060_960_720.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>ADMIN DASHBOARD</h1>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        
+
+        <div class="container">
+            <% arr.forEach((item) => { %>
+                <div class="row">
+                    <div class="col-lg-4 mx-auto">
+                        <button 
+                                id="<%=item.actionId%>" 
+                                type="button" 
+                                class="btn btn-outline-danger btn-block"
+                                onclick="catchId(this.id)"
+                        >
+                            <%=item.displayName%>
+                        </button>
+                    </div>   
+                </div>
+                <br>
+            <%});%>
+        </div>
+
+        <script>
+            function catchId(id) {
+                alert(id + "numarali butona tiklandi")
+            }
+
+        </script>
+        
+<%-include('../partials/footer')%>
