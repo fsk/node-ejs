@@ -57,17 +57,20 @@ router.get("/signup", (req, res) => {
 })
 
 router.post("/signup", async (req, res) => {
-    User.register(new User({ username : req.body.email }), req.body.password, function(err, user) {
+    User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
         if (err) {
           console.log(err);
           return res.status(400).send(err.message + "dafsdf");
         }
     
-        passport.authenticate('local')(req, res, function () {
-          console.log("created new user %s", req.body.username);
-          res.redirect("http:localhost/about");
+        passport.authenticate('local')(req,res, function () {
+            console.log("created new user %s", req.body.username);
+          res.redirect("/");
           res.status(201).send();
-        });
+        })
+        
+          
+       
     
       });
 });

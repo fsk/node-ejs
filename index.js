@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const expressSession = require("express-session");
-const localStrategy = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 const passport = require("passport");
 const user = require("./models/userModel");
 const cors = require('cors');
@@ -35,9 +35,9 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new localStrategy(user.authenticate));
+passport.use(new LocalStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
-passport.serializeUser(user.deserializeUser());
+passport.deserializeUser(user.deserializeUser());
 
 //MONGOOSE CONNECT
 mongoose.connect("mongodb://localhost/BlogApp", {
